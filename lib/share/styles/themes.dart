@@ -7,6 +7,7 @@ ThemeData themeData = ThemeData(
   scaffoldBackgroundColor: black,
   brightness: Brightness.dark,
   textTheme: textTheme,
+  elevatedButtonTheme: elevatedButtonThemeData,
 );
 
 TextTheme textTheme = TextTheme(
@@ -20,5 +21,23 @@ TextTheme textTheme = TextTheme(
   bodyText2: textStyle3,
   caption: textStyle3,
   overline: textStyle3,
-  button: textStyle4,
+  button: textStyle4.copyWith(
+    fontWeight: semiBold,
+    letterSpacing: 1.1,
+  ),
+);
+
+ElevatedButtonThemeData elevatedButtonThemeData = ElevatedButtonThemeData(
+  style: ElevatedButton.styleFrom(
+    backgroundColor: blue,
+    foregroundColor: gray,
+    elevation: 0,
+    shape: RoundedRectangleBorder(
+      borderRadius: BorderRadius.circular(15),
+    ),
+    textStyle: TextStyle(
+      fontWeight: semiBold,
+      letterSpacing: 1.1,
+    ),
+  ),
 );
