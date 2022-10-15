@@ -15,7 +15,7 @@ Route<dynamic> controller(RouteSettings settings) {
       );
     case splashPage:
       return MaterialPageRoute(
-        builder: (context) => const SplashPage(),
+        builder: (context) => SplashPage(),
       );
     case loginPage:
       return MaterialPageRoute(
