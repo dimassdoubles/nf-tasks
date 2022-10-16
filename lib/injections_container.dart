@@ -1,7 +1,12 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:get_it/get_it.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+import 'data/datasources/task_remote_datasource.dart';
+import 'data/repositories/task_repository_impl.dart';
+import 'domain/repositories/task_reporitory.dart';
+import 'domain/usecases/get_tasks.dart';
 import 'data/repositories/user_repository_impl.dart';
 import 'domain/repositories/user_repository.dart';
 import 'domain/usecases/get_user_signed_in.dart';
@@ -21,12 +26,26 @@ Future<void> setup() async {
       "email",
     ],
   );
+  final FirebaseFirestore firestore = FirebaseFirestore.instance;
+
+  // datasources
+  getIt.registerSingleton<TaskRemoteDataSource>(
+    FirestoreTaskDataSource(
+      firestore: firestore,
+    ),
+  );
 
   // repositories
   getIt.registerSingleton<UserRepository>(
     UserRepositoryImpl(
       firebaseAuth: firebaseAuth,
       googleSignIn: googleSignIn,
+    ),
+  );
+
+  getIt.registerSingleton<TaskRepository>(
+    TaskRepositoryImpl(
+      remoteDataSource: getIt(),
     ),
   );
 
@@ -48,6 +67,12 @@ Future<void> setup() async {
   );
   getIt.registerLazySingleton<GetUserSignedIn>(
     () => GetUserSignedIn(
+      repository: getIt(),
+    ),
+  );
+
+  getIt.registerLazySingleton<GetTasks>(
+    () => GetTasks(
       repository: getIt(),
     ),
   );
