@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+
 import '../../injections_container.dart';
-import '../bloc/authentication_bloc/bloc.dart';
 import '../../share/routes.dart';
+import '../bloc/authentication_bloc/bloc.dart';
 import '../widgets/home_app_bar.dart';
 import '../widgets/task_list.dart';
 import '../widgets/task_progress.dart';
