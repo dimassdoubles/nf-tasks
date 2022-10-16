@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../injections_container.dart';
-import '../bloc/authentication_bloc/authentication_bloc.dart';
-import '../bloc/authentication_bloc/authentication_event.dart';
-import '../bloc/authentication_bloc/authentication_state.dart';
+import '../bloc/authentication_bloc/bloc.dart';
 import '../../share/routes.dart';
+import '../widgets/home_app_bar.dart';
+import '../widgets/task_list.dart';
+import '../widgets/task_progress.dart';
 
 class HomePage extends StatelessWidget {
   HomePage({super.key});
@@ -12,61 +13,26 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocConsumer(
+    return BlocListener<AuthenticationBloc, AuthenticationState>(
       bloc: _authBloc,
       listener: (context, state) {
-        if (state is Unauthenticated) {
+        if (state is Unauthenticated || state is Uninitialized) {
           Navigator.pushReplacementNamed(context, loginPage);
         }
       },
-      builder: (context, state) {
-        if (state is Authenticated) {
-          return Scaffold(
-            body: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                const Text('Home Page'),
-                const SizedBox(
-                  height: 32,
-                ),
-                Text('${state.user.name} - ${state.user.email}'),
-                Text(state.user.uid),
-                const SizedBox(
-                  height: 32,
-                ),
-                Center(
-                  child: ElevatedButton(
-                    onPressed: () {
-                      _authBloc.add(LoggedOut());
-                    },
-                    child: const Text('Sign Out'),
-                  ),
-                ),
-              ],
-            ),
-          );
-        } else {
-          return Scaffold(
-            body: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                const Text('Home Page'),
-                const SizedBox(
-                  height: 32,
-                ),
-                Center(
-                  child: ElevatedButton(
-                    onPressed: () {
-                      _authBloc.add(LoggedOut());
-                    },
-                    child: const Text('Sign Out'),
-                  ),
-                ),
-              ],
-            ),
-          );
-        }
-      },
+      child: Scaffold(
+        body: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 16),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              HomeAppBar(),
+              const TaskProgress(),
+              const TaskList(),
+            ],
+          ),
+        ),
+      ),
     );
   }
 }
