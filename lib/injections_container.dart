@@ -3,6 +3,12 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:get_it/get_it.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+import 'package:nf_tasks/data/datasources/user_task_remote_datasource.dart';
+import 'package:nf_tasks/data/repositories/user_task_repository.dart';
+import 'package:nf_tasks/domain/repositories/user_task_repository.dart';
+import 'package:nf_tasks/domain/usecases/get_user_tasks.dart';
+import 'package:nf_tasks/domain/usecases/initialize_user_tasks.dart';
+import 'package:nf_tasks/domain/usecases/update_user_tasks.dart';
 import 'data/datasources/task_remote_datasource.dart';
 import 'data/repositories/task_repository_impl.dart';
 import 'domain/repositories/task_reporitory.dart';
@@ -35,6 +41,12 @@ Future<void> setup() async {
     ),
   );
 
+  getIt.registerSingleton<UserTaskRemoteDataSource>(
+    FirestoreUserTaskDataSource(
+      firestore: firestore,
+    ),
+  );
+
   // repositories
   getIt.registerSingleton<UserRepository>(
     UserRepositoryImpl(
@@ -45,6 +57,12 @@ Future<void> setup() async {
 
   getIt.registerSingleton<TaskRepository>(
     TaskRepositoryImpl(
+      remoteDataSource: getIt(),
+    ),
+  );
+
+  getIt.registerSingleton<UserTaskRepository>(
+    UserTaskRepositoryImpl(
       remoteDataSource: getIt(),
     ),
   );
@@ -73,6 +91,24 @@ Future<void> setup() async {
 
   getIt.registerLazySingleton<GetTasks>(
     () => GetTasks(
+      repository: getIt(),
+    ),
+  );
+
+  getIt.registerLazySingleton<GetUserTasks>(
+    () => GetUserTasks(
+      repository: getIt(),
+    ),
+  );
+
+  getIt.registerLazySingleton<InitializeUserTasks>(
+    () => InitializeUserTasks(
+      repository: getIt(),
+    ),
+  );
+
+  getIt.registerLazySingleton<UpdateUserTasks>(
+    () => UpdateUserTasks(
       repository: getIt(),
     ),
   );
