@@ -8,7 +8,7 @@ abstract class TaskRemoteDataSource {
 class FirestoreTaskDataSource extends TaskRemoteDataSource {
   static const collectionName = "tasks";
 
-  FirebaseFirestore _firestore;
+  final FirebaseFirestore _firestore;
 
   FirestoreTaskDataSource({
     required FirebaseFirestore firestore,
