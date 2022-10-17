@@ -1,5 +1,5 @@
 class Task {
-  String _id, _deadline, _description, _title, _type;
+  final String _id, _deadline, _description, _title, _type;
   
   Task({
     required String id,
