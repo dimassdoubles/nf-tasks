@@ -24,14 +24,13 @@ class HomePage extends StatelessWidget {
         },
         builder: (context, state) {
           if (state is Authenticated) {
-
             return Padding(
               padding: const EdgeInsets.symmetric(horizontal: 16),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   HomeAppBar(),
-                  const TaskProgress(),
+                  TaskProgress(),
                   TaskList(uid: state.user.uid),
                 ],
               ),
