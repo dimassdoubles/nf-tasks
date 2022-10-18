@@ -8,6 +8,12 @@ ThemeData themeData = ThemeData(
   brightness: Brightness.dark,
   textTheme: textTheme,
   elevatedButtonTheme: elevatedButtonThemeData,
+  appBarTheme: appBarTheme,
+);
+
+AppBarTheme appBarTheme = AppBarTheme(
+  backgroundColor: black,
+  elevation: 0,
 );
 
 TextTheme textTheme = TextTheme(

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:nf_tasks/share/routes.dart';
 
 import '../../domain/entity/app_task.dart';
 import '../../domain/entity/user_task.dart';
@@ -79,11 +80,21 @@ class TaskItem extends StatelessWidget {
                 ),
               ),
               (_appTask.task.description != "")
-                  ? GestureDetector(
-                      onTap: () {},
-                      child: const Icon(
-                        Icons.arrow_forward_ios_rounded,
-                        size: 14,
+                  ? InkWell(
+                      onTap: () {
+                        print(_appTask.task);
+                        Navigator.pushNamed(
+                          context,
+                          detailTaskPage,
+                          arguments: _appTask.task,
+                        );
+                      },
+                      child: const Padding(
+                        padding: EdgeInsets.only(left: 4),
+                        child: Icon(
+                          Icons.arrow_forward_ios_rounded,
+                          size: 14,
+                        ),
                       ),
                     )
                   : const SizedBox(),
