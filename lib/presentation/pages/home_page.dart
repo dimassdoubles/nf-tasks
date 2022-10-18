@@ -14,25 +14,32 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocListener<AuthenticationBloc, AuthenticationState>(
-      bloc: _authBloc,
-      listener: (context, state) {
-        if (state is Unauthenticated || state is Uninitialized) {
-          Navigator.pushReplacementNamed(context, loginPage);
-        }
-      },
-      child: Scaffold(
-        body: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 16),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              HomeAppBar(),
-              const TaskProgress(),
-              const TaskList(),
-            ],
-          ),
-        ),
+    return Scaffold(
+      body: BlocConsumer<AuthenticationBloc, AuthenticationState>(
+        bloc: _authBloc,
+        listener: (context, state) {
+          if (state is Unauthenticated || state is Uninitialized) {
+            Navigator.pushReplacementNamed(context, loginPage);
+          }
+        },
+        builder: (context, state) {
+          if (state is Authenticated) {
+
+            return Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 16),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  HomeAppBar(),
+                  const TaskProgress(),
+                  TaskList(uid: state.user.uid),
+                ],
+              ),
+            );
+          } else {
+            return const SizedBox();
+          }
+        },
       ),
     );
   }

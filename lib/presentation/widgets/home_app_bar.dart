@@ -73,24 +73,16 @@ class HomeAppBar extends StatelessWidget {
                           GetTasks getTasks = getIt<GetTasks>();
                           final result = await getTasks();
                           for (int i = 0; i < result.length; i++) {
-                            print(result[i].title);
                           }
 
                           GetUserTasks getUserTasks = getIt<GetUserTasks>();
                           final listUserTasks = await getUserTasks(
                             uid: state.user.uid,
                           );
-                          print(
-                            "list user task length: ${listUserTasks.length}",
-                          );
-                          print("uid : ${state.user.uid}");
                           for (int i = 0; i < listUserTasks.length; i++) {
-                            print(
-                                "${listUserTasks[i].taskid} - ${listUserTasks[i].isNew}");
                           }
 
                           if (listUserTasks.isEmpty) {
-                            print("melaukan inisialisasi user task");
                             final initializeUserTasks =
                                 getIt<InitializeUserTasks>();
                             initializeUserTasks(
@@ -105,7 +97,6 @@ class HomeAppBar extends StatelessWidget {
                             );
                           }
 
-                          print("update user tasks");
                           final updateUserTasks = getIt<UpdateUserTasks>();
                           await updateUserTasks(
                             uid: state.user.uid,
@@ -123,12 +114,8 @@ class HomeAppBar extends StatelessWidget {
                           final newListUserTasks =
                               await getUserTasks(uid: state.user.uid);
 
-                          print("user task baru");
                           for (int i = 0; i < newListUserTasks.length; i++) {
-                            print(
-                                "${newListUserTasks[i].taskid} - ${newListUserTasks[i].isNew}");
                           }
-                          print("selesai");
                         },
                         child: Text(
                           'Dimas Saputro',

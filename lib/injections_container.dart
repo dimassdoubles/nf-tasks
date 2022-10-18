@@ -9,6 +9,7 @@ import 'package:nf_tasks/domain/repositories/user_task_repository.dart';
 import 'package:nf_tasks/domain/usecases/get_user_tasks.dart';
 import 'package:nf_tasks/domain/usecases/initialize_user_tasks.dart';
 import 'package:nf_tasks/domain/usecases/update_user_tasks.dart';
+import 'package:nf_tasks/presentation/cubit/app_task_cubit.dart';
 import 'data/datasources/task_remote_datasource.dart';
 import 'data/repositories/task_repository_impl.dart';
 import 'domain/repositories/task_reporitory.dart';
@@ -120,6 +121,15 @@ Future<void> setup() async {
       signOut: getIt(),
       isSignIn: getIt(),
       getUserSignedIn: getIt(),
+    ),
+  );
+
+  getIt.registerLazySingleton(
+    () => AppTaskCubit(
+      getUserTasks: getIt(),
+      initializeUserTasks: getIt(),
+      updateUserTasks: getIt(),
+      getTasks: getIt(),
     ),
   );
 }
