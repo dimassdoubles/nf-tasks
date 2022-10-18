@@ -47,20 +47,15 @@ class TaskList extends StatelessWidget {
                       fontSize: 16,
                     ),
                   ),
-                  ListView.builder(
-                    shrinkWrap: true,
-                    physics: const ClampingScrollPhysics(),
-                    itemCount: _appTaskCubit.state.length,
-                    itemBuilder: (context, index) {
-                      return (state[index].userTask.isCompleted)
-                          ? const SizedBox()
-                          : TaskItem(
-                              uid: _uid,
-                              appTask: state[index],
-                              completed: false,
-                            );
-                    },
+                  const SizedBox(
+                    height: 16,
                   ),
+                  ...state
+                      .where((element) => !element.userTask.isCompleted)
+                      .toList()
+                      .map((e) =>
+                          TaskItem(appTask: e, completed: false, uid: _uid))
+                      .toList(),
                   const SizedBox(
                     height: 32,
                   ),
@@ -70,20 +65,15 @@ class TaskList extends StatelessWidget {
                       fontSize: 16,
                     ),
                   ),
-                  ListView.builder(
-                    shrinkWrap: true,
-                    physics: const ClampingScrollPhysics(),
-                    itemCount: _appTaskCubit.state.length,
-                    itemBuilder: (context, index) {
-                      return (state[index].userTask.isCompleted)
-                          ? TaskItem(
-                              uid: _uid,
-                              appTask: state[index],
-                              completed: true,
-                            )
-                          : const SizedBox();
-                    },
+                  const SizedBox(
+                    height: 16,
                   ),
+                  ...state
+                      .where((element) => element.userTask.isCompleted)
+                      .toList()
+                      .map((e) =>
+                          TaskItem(appTask: e, completed: true, uid: _uid))
+                      .toList(),
                   const SizedBox(
                     height: 62,
                   ),
@@ -96,4 +86,3 @@ class TaskList extends StatelessWidget {
     );
   }
 }
-
