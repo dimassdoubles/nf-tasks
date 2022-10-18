@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:nf_tasks/domain/entity/user_task.dart';
-import 'package:nf_tasks/domain/usecases/get_user_tasks.dart';
-import 'package:nf_tasks/domain/usecases/initialize_user_tasks.dart';
-import 'package:nf_tasks/domain/usecases/update_user_tasks.dart';
+import '../../domain/entity/user_task.dart';
+import '../../domain/usecases/get_user_tasks.dart';
+import '../../domain/usecases/initialize_user_tasks.dart';
+import '../../domain/usecases/update_user_tasks.dart';
 import '../../domain/usecases/get_tasks.dart';
 import '../../injections_container.dart';
 import '../../share/styles/colors.dart';

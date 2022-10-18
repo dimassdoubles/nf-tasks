@@ -1,4 +1,4 @@
-import 'package:nf_tasks/domain/repositories/user_task_repository.dart';
+import '../repositories/user_task_repository.dart';
 
 class InitializeUserTasks {
   final UserTaskRepository _repository;

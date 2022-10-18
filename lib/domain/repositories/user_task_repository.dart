@@ -1,4 +1,4 @@
-import 'package:nf_tasks/domain/entity/user_task.dart';
+import '../entity/user_task.dart';
 
 abstract class UserTaskRepository {
   Future<List<UserTask>> getUserTasks({

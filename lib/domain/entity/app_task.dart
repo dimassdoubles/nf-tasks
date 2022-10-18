@@ -1,5 +1,5 @@
-import 'package:nf_tasks/domain/entity/task.dart';
-import 'package:nf_tasks/domain/entity/user_task.dart';
+import 'task.dart';
+import 'user_task.dart';
 
 class AppTask {
   final Task _task;

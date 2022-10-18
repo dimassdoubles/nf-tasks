@@ -1,5 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:nf_tasks/domain/entity/user_task.dart';
+import '../../domain/entity/user_task.dart';
 
 abstract class UserTaskRemoteDataSource {
   Future<List<UserTask>> getUserTasks({

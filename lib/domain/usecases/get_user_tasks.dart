@@ -1,5 +1,5 @@
-import 'package:nf_tasks/domain/entity/user_task.dart';
-import 'package:nf_tasks/domain/repositories/user_task_repository.dart';
+import '../entity/user_task.dart';
+import '../repositories/user_task_repository.dart';
 
 class GetUserTasks {
   final UserTaskRepository _repository;

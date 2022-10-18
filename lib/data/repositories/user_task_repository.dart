@@ -1,5 +1,5 @@
-import 'package:nf_tasks/domain/entity/user_task.dart';
-import 'package:nf_tasks/domain/repositories/user_task_repository.dart';
+import '../../domain/entity/user_task.dart';
+import '../../domain/repositories/user_task_repository.dart';
 
 import '../datasources/user_task_remote_datasource.dart';
 
