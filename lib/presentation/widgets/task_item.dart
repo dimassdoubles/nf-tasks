@@ -38,18 +38,18 @@ class TaskItem extends StatelessWidget {
           ),
           child: Row(
             children: [
-              GestureDetector(
-                onTap: () {
-                  UserTask userTask = _appTask.userTask;
-                  userTask.completed();
-                  _appTaskCubit.updateUserTasks(
-                    uid: _uid,
-                    listUserTasks: [userTask],
-                  );
-                  _appTaskCubit.getUserTasks(uid: _uid);
-                },
-                child: (_completed)
-                    ? Container(
+              (_completed)
+                  ? GestureDetector(
+                      onTap: () {
+                        UserTask userTask = _appTask.userTask;
+                        userTask.unCompleted();
+                        _appTaskCubit.updateUserTasks(
+                          uid: _uid,
+                          listUserTasks: [userTask],
+                        );
+                        _appTaskCubit.getUserTasks(uid: _uid);
+                      },
+                      child: Container(
                         width: 25,
                         height: 25,
                         decoration: BoxDecoration(
@@ -60,8 +60,19 @@ class TaskItem extends StatelessWidget {
                           Icons.check_rounded,
                           size: 14,
                         ),
-                      )
-                    : Container(
+                      ),
+                    )
+                  : GestureDetector(
+                      onTap: () {
+                        UserTask userTask = _appTask.userTask;
+                        userTask.completed();
+                        _appTaskCubit.updateUserTasks(
+                          uid: _uid,
+                          listUserTasks: [userTask],
+                        );
+                        _appTaskCubit.getUserTasks(uid: _uid);
+                      },
+                      child: Container(
                         width: 25,
                         height: 25,
                         decoration: BoxDecoration(
@@ -69,7 +80,7 @@ class TaskItem extends StatelessWidget {
                           color: gray,
                         ),
                       ),
-              ),
+                    ),
               const SizedBox(
                 width: 8,
               ),
@@ -82,7 +93,6 @@ class TaskItem extends StatelessWidget {
               (_appTask.task.description != "")
                   ? InkWell(
                       onTap: () {
-                        print(_appTask.task);
                         Navigator.pushNamed(
                           context,
                           detailTaskPage,
