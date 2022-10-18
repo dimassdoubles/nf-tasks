@@ -1,14 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../../domain/entity/user_task.dart';
-import '../../domain/usecases/get_user_tasks.dart';
-import '../../domain/usecases/initialize_user_tasks.dart';
-import '../../domain/usecases/update_user_tasks.dart';
-import '../../domain/usecases/get_tasks.dart';
 import '../../injections_container.dart';
 import '../../share/styles/colors.dart';
 import '../../share/styles/text_styles.dart';
 import '../bloc/authentication_bloc/bloc.dart';
+import '../cubit/app_task_cubit.dart';
 
 class HomeAppBar extends StatelessWidget {
   HomeAppBar({
@@ -16,6 +12,7 @@ class HomeAppBar extends StatelessWidget {
   }) : super(key: key);
 
   final AuthenticationBloc _authBloc = getIt<AuthenticationBloc>();
+  final AppTaskCubit _appTaskCubit = getIt<AppTaskCubit>();
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -68,62 +65,12 @@ class HomeAppBar extends StatelessWidget {
                   bloc: _authBloc,
                   builder: (context, state) {
                     if (state is Authenticated) {
-                      return GestureDetector(
-                        onTap: () async {
-                          GetTasks getTasks = getIt<GetTasks>();
-                          final result = await getTasks();
-                          for (int i = 0; i < result.length; i++) {
-                          }
-
-                          GetUserTasks getUserTasks = getIt<GetUserTasks>();
-                          final listUserTasks = await getUserTasks(
-                            uid: state.user.uid,
-                          );
-                          for (int i = 0; i < listUserTasks.length; i++) {
-                          }
-
-                          if (listUserTasks.isEmpty) {
-                            final initializeUserTasks =
-                                getIt<InitializeUserTasks>();
-                            initializeUserTasks(
-                              uid: state.user.uid,
-                              listTaskId: [
-                                "test1",
-                                "test2",
-                                "test3",
-                                "test4",
-                                "test5",
-                              ],
-                            );
-                          }
-
-                          final updateUserTasks = getIt<UpdateUserTasks>();
-                          await updateUserTasks(
-                            uid: state.user.uid,
-                            listUserTasks: listUserTasks
-                                .map(
-                                  (e) => UserTask(
-                                    taskId: e.taskid,
-                                    isCompleted: false,
-                                    isNew: false,
-                                  ),
-                                )
-                                .toList(),
-                          );
-
-                          final newListUserTasks =
-                              await getUserTasks(uid: state.user.uid);
-
-                          for (int i = 0; i < newListUserTasks.length; i++) {
-                          }
-                        },
-                        child: Text(
-                          'Dimas Saputro',
-                          style: Theme.of(context)
-                              .textTheme
-                              .headline6!
-                              .copyWith(fontWeight: medium),
-                        ),
+                      return Text(
+                        state.user.name!,
+                        style: Theme.of(context)
+                            .textTheme
+                            .headline6!
+                            .copyWith(fontWeight: medium),
                       );
                     } else {
                       return const SizedBox();
@@ -134,9 +81,32 @@ class HomeAppBar extends StatelessWidget {
                   child: Align(
                     alignment: Alignment.centerRight,
                     child: IconButton(
-                      icon: Image.asset(
-                        "assets/notification-icon.png",
-                        width: 24,
+                      icon: BlocBuilder(
+                        bloc: _appTaskCubit,
+                        builder: (context, state) {
+                          bool isNewTask = false;
+                          for (int i = 0; i < _appTaskCubit.state.length; i++) {
+                            if (_appTaskCubit.state[i].userTask.isNew) {
+                              isNewTask = true;
+                              break;
+                            }
+                          }
+                          return Stack(
+                            children: [
+                              Image.asset(
+                                "assets/notification-icon.png",
+                                width: 24,
+                              ),
+                              Visibility(
+                                visible: isNewTask ? true : false,
+                                child: Image.asset(
+                                  "assets/new-notification-icon.png",
+                                  width: 24,
+                                ),
+                              ),
+                            ],
+                          );
+                        },
                       ),
                       onPressed: () {},
                     ),
