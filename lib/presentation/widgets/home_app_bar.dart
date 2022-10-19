@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:nf_tasks/share/routes.dart';
+import '../../domain/entity/app_task.dart';
 import '../../injections_container.dart';
 import '../../share/styles/colors.dart';
 import '../../share/styles/text_styles.dart';
@@ -80,35 +82,77 @@ class HomeAppBar extends StatelessWidget {
                 Expanded(
                   child: Align(
                     alignment: Alignment.centerRight,
-                    child: IconButton(
-                      icon: BlocBuilder(
-                        bloc: _appTaskCubit,
-                        builder: (context, state) {
-                          bool isNewTask = false;
-                          for (int i = 0; i < _appTaskCubit.state.length; i++) {
-                            if (_appTaskCubit.state[i].userTask.isNew) {
-                              isNewTask = true;
-                              break;
-                            }
-                          }
-                          return Stack(
-                            children: [
-                              Image.asset(
-                                "assets/notification-icon.png",
-                                width: 24,
-                              ),
-                              Visibility(
-                                visible: isNewTask ? true : false,
-                                child: Image.asset(
-                                  "assets/new-notification-icon.png",
-                                  width: 24,
-                                ),
-                              ),
-                            ],
+                    child: BlocBuilder(
+                      bloc: _authBloc,
+                      builder: (context, state) {
+                        if (state is Authenticated) {
+                          return IconButton(
+                            icon: BlocBuilder(
+                              bloc: _appTaskCubit,
+                              builder: (context, state) {
+                                bool isNewTask = false;
+                                for (int i = 0;
+                                    i < _appTaskCubit.state.length;
+                                    i++) {
+                                  if (_appTaskCubit.state[i].userTask.isNew) {
+                                    isNewTask = true;
+                                    break;
+                                  }
+                                }
+                                return Stack(
+                                  children: [
+                                    Image.asset(
+                                      "assets/notification-icon.png",
+                                      width: 24,
+                                    ),
+                                    Visibility(
+                                      visible: isNewTask ? true : false,
+                                      child: Image.asset(
+                                        "assets/new-notification-icon.png",
+                                        width: 24,
+                                      ),
+                                    ),
+                                  ],
+                                );
+                              },
+                            ),
+                            onPressed: () {
+                              List<AppTask> listNewAppTask = _appTaskCubit.state
+                                  .where(
+                                    (element) => element.userTask.isNew,
+                                  )
+                                  .toList();
+                              if (listNewAppTask.isNotEmpty) {
+                                _appTaskCubit.updateUserTasks(
+                                  uid: state.user.uid,
+                                  listUserTasks: [
+                                    ...listNewAppTask
+                                        .map((e) => e.userTask)
+                                        .map(
+                                      (e) {
+                                        e.read();
+                                        return e;
+                                      },
+                                    ),
+                                  ],
+                                );
+                                Navigator.pushNamed(
+                                  context,
+                                  notificationPage,
+                                  arguments: [
+                                    ...listNewAppTask.map((e) => e.task),
+                                  ],
+                                );
+                              }
+                            },
                           );
-                        },
-                      ),
-                      onPressed: () {},
+                        } else {
+                          return Image.asset(
+                            "assets/notification-icon.png",
+                            width: 24,
+                          );
+                        }
+                      },
                     ),
                   ),
                 ),

@@ -54,7 +54,6 @@ class TaskProgress extends StatelessWidget {
                       (e) => e.id,
                     )
                     .toList();
-                print(typeListTaskId);
                 int completedCount = 0;
                 for (int i = 0; i < listUserTask.length; i++) {
                   if (typeListTaskId.contains(listUserTask[i].taskid) &&
@@ -89,7 +88,9 @@ class TaskProgress extends StatelessWidget {
                           children: [
                             Expanded(
                               child: LinearPercentIndicator(
-                                percent: completedCount / typeListTaskId.length,
+                                percent: (completedCount > 0)
+                                    ? completedCount / typeListTaskId.length
+                                    : 0,
                                 backgroundColor: gray,
                                 progressColor: black,
                                 lineHeight: 15,
@@ -101,7 +102,7 @@ class TaskProgress extends StatelessWidget {
                               width: 8,
                             ),
                             Text(
-                              '${(completedCount / typeListTaskId.length * 100).round()} %',
+                              '${(completedCount > 0) ? (completedCount / typeListTaskId.length * 100).round() : 0} %',
                               style: Theme.of(context)
                                   .textTheme
                                   .headline6!
