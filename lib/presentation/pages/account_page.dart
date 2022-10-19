@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+
 import '../../injections_container.dart';
+import '../../share/routes.dart';
+import '../../share/styles/colors.dart';
+import '../../share/styles/text_styles.dart';
 import '../bloc/authentication_bloc/authentication_bloc.dart';
 import '../bloc/authentication_bloc/authentication_event.dart';
 import '../bloc/authentication_bloc/authentication_state.dart';
-import '../../share/routes.dart';
-import '../../share/styles/text_styles.dart';
-
-import '../../share/styles/colors.dart';
 
 class AccountPage extends StatelessWidget {
   AccountPage({super.key});

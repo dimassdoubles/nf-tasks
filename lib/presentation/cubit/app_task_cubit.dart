@@ -1,4 +1,6 @@
 import 'package:bloc/bloc.dart';
+import '../../domain/usecases/synchronize_task_with_user_task.dart';
+import '../../injections_container.dart';
 import '../../domain/entity/user_task.dart';
 import '../../domain/usecases/get_tasks.dart';
 import '../../domain/usecases/get_user_tasks.dart';
@@ -39,6 +41,15 @@ class AppTaskCubit extends Cubit<List<AppTask>> {
           UserTask(taskId: listTasks[i].id),
         );
       }
+    } else if (listUserTasks.length != listTasks.length) {
+      final synchronize = getIt<SynchronizeTaskWithUserTask>();
+
+      final newUserTask = synchronize(
+        listTask: listTasks,
+        listUserTask: listUserTasks,
+      );
+      listUserTasks = [...listUserTasks, ...newUserTask];
+      await _updateUserTasks(uid: uid, listUserTasks: newUserTask);
     }
 
     List<AppTask> listAppTask = [];

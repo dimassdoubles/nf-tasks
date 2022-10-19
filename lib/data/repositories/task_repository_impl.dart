@@ -1,6 +1,6 @@
-import '../datasources/task_remote_datasource.dart';
 import '../../domain/entity/task.dart';
 import '../../domain/repositories/task_reporitory.dart';
+import '../datasources/task_remote_datasource.dart';
 
 class TaskRepositoryImpl extends TaskRepository {
   final TaskRemoteDataSource _remoteDataSource;

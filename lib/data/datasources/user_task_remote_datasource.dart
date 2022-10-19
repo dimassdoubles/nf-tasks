@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+
 import '../../domain/entity/user_task.dart';
 
 abstract class UserTaskRemoteDataSource {
