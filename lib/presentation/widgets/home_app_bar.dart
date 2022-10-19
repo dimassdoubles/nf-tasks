@@ -22,7 +22,7 @@ class HomeAppBar extends StatelessWidget {
       children: [
         SafeArea(
           child: Padding(
-            padding: const EdgeInsets.only(top: 16),
+            padding: const EdgeInsets.only(top: 16, left: 16, right: 16),
             child: Row(
               children: [
                 InkWell(
