@@ -8,7 +8,14 @@ ThemeData themeData = ThemeData(
   brightness: Brightness.dark,
   textTheme: textTheme,
   elevatedButtonTheme: elevatedButtonThemeData,
+  textButtonTheme: textButtonTheme,
   appBarTheme: appBarTheme,
+);
+
+TextButtonThemeData textButtonTheme = TextButtonThemeData(
+  style: TextButton.styleFrom(
+    foregroundColor: pink,
+  ),
 );
 
 AppBarTheme appBarTheme = AppBarTheme(

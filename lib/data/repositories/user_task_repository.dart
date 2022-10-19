@@ -1,6 +1,5 @@
 import '../../domain/entity/user_task.dart';
 import '../../domain/repositories/user_task_repository.dart';
-
 import '../datasources/user_task_remote_datasource.dart';
 
 class UserTaskRepositoryImpl extends UserTaskRepository {

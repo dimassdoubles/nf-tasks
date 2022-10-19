@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../presentation/pages/account_page.dart';
 import '../domain/entity/task.dart';
 import '../presentation/pages/detail_task_page.dart';
 import '../presentation/pages/notification_page.dart';
@@ -11,9 +12,14 @@ const String loginPage = "login-page";
 const String homePage = "home-page";
 const String detailTaskPage = "detail-task-page";
 const String notificationPage = "notification-page";
+const String accountPage = "account-page";
 
 Route<dynamic> controller(RouteSettings settings) {
   switch (settings.name) {
+    case accountPage:
+      return MaterialPageRoute(
+        builder: (context) => AccountPage(),
+      );
     case notificationPage:
       final args = settings.arguments as List<Task>;
       return MaterialPageRoute(

@@ -25,7 +25,7 @@ class HomeAppBar extends StatelessWidget {
             child: Row(
               children: [
                 InkWell(
-                  onTap: () => _authBloc.add(LoggedOut()),
+                  onTap: () => Navigator.pushNamed(context, accountPage),
                   child: Container(
                     width: 50,
                     height: 50,

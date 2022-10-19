@@ -1,4 +1,5 @@
 import 'package:bloc/bloc.dart';
+
 import '../../../domain/usecases/get_user_signed_in.dart';
 import '../../../domain/usecases/is_sign_in.dart';
 import '../../../domain/usecases/sign_in_with_google.dart';

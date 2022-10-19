@@ -1,6 +1,5 @@
-import '../repositories/user_task_repository.dart';
-
 import '../entity/user_task.dart';
+import '../repositories/user_task_repository.dart';
 
 class UpdateUserTasks {
   final UserTaskRepository _repository;
