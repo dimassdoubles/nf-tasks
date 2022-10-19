@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../../share/routes.dart';
+
 import '../../domain/entity/app_task.dart';
 import '../../injections_container.dart';
+import '../../share/routes.dart';
 import '../../share/styles/colors.dart';
 import '../../share/styles/text_styles.dart';
 import '../bloc/authentication_bloc/bloc.dart';

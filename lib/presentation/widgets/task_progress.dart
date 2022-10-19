@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../../domain/entity/task.dart';
-import '../cubit/app_task_cubit.dart';
 import 'package:percent_indicator/linear_percent_indicator.dart';
 
 import '../../domain/entity/app_task.dart';
+import '../../domain/entity/task.dart';
 import '../../domain/entity/user_task.dart';
 import '../../injections_container.dart';
 import '../../share/styles/colors.dart';
 import '../../share/styles/text_styles.dart';
+import '../cubit/app_task_cubit.dart';
 
 class TaskProgress extends StatelessWidget {
   TaskProgress({
