@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:nf_tasks/share/routes.dart';
+import '../../share/routes.dart';
 import '../../domain/entity/app_task.dart';
 import '../../injections_container.dart';
 import '../../share/styles/colors.dart';

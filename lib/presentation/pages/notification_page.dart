@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:nf_tasks/share/routes.dart';
+import '../../share/routes.dart';
 
 import '../../domain/entity/task.dart';
 

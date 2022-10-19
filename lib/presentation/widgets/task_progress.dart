@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:nf_tasks/domain/entity/task.dart';
-import 'package:nf_tasks/presentation/cubit/app_task_cubit.dart';
+import '../../domain/entity/task.dart';
+import '../cubit/app_task_cubit.dart';
 import 'package:percent_indicator/linear_percent_indicator.dart';
 
 import '../../domain/entity/app_task.dart';

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:nf_tasks/domain/entity/task.dart';
-import 'package:nf_tasks/presentation/pages/detail_task_page.dart';
-import 'package:nf_tasks/presentation/pages/notification_page.dart';
+import '../domain/entity/task.dart';
+import '../presentation/pages/detail_task_page.dart';
+import '../presentation/pages/notification_page.dart';
 import '../presentation/pages/home_page.dart';
 import '../presentation/pages/splash_page.dart';
 import '../presentation/pages/login_page.dart';
