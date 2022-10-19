@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:nf_tasks/share/styles/colors.dart';
 import '../../share/routes.dart';
 
 import '../../domain/entity/task.dart';
@@ -22,9 +23,45 @@ class NotificationPage extends StatelessWidget {
         ),
         title: const Text("Notifications"),
       ),
-      body: ListView.builder(
-        itemCount: _listTask.length,
-        itemBuilder: (context, index) => Text(_listTask[index].title),
+      body: Padding(
+        padding: const EdgeInsets.symmetric(
+          horizontal: 16,
+        ),
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              const SizedBox(
+                height: 16,
+              ),
+              ListView.builder(
+                shrinkWrap: true,
+                physics: const ClampingScrollPhysics(),
+                itemCount: _listTask.length,
+                itemBuilder: (context, index) => Padding(
+                  padding: const EdgeInsets.only(
+                    bottom: 8,
+                  ),
+                  child: Container(
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 16,
+                      vertical: 16,
+                    ),
+                    width: double.infinity,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadiusDirectional.circular(
+                        15,
+                      ),
+                      color: blue.withOpacity(0.5),
+                    ),
+                    child: Text(
+                      _listTask[index].title,
+                    ),
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ),
       ),
     );
   }
