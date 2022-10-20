@@ -17,11 +17,7 @@ class HomePage extends StatelessWidget {
     return Scaffold(
       body: BlocConsumer<AuthenticationBloc, AuthenticationState>(
         bloc: _authBloc,
-        listener: (context, state) {
-          if (state is Unauthenticated || state is Uninitialized) {
-            Navigator.pushReplacementNamed(context, loginPage);
-          }
-        },
+        listener: (context, state) => (state is !Authenticated) ? Navigator.pushReplacementNamed(context, loginPage) : null,
         builder: (context, state) {
           if (state is Authenticated) {
             return Column(
