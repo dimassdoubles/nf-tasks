@@ -17,17 +17,57 @@ class HomePage extends StatelessWidget {
     return Scaffold(
       body: BlocConsumer<AuthenticationBloc, AuthenticationState>(
         bloc: _authBloc,
-        listener: (context, state) => (state is !Authenticated) ? Navigator.pushReplacementNamed(context, loginPage) : null,
+        listener: (context, state) => (state is! Authenticated)
+            ? Navigator.pushReplacementNamed(context, loginPage)
+            : null,
         builder: (context, state) {
           if (state is Authenticated) {
-            return Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                HomeAppBar(),
-                const TaskProgress(),
-                TaskList(uid: state.user.uid),
-              ],
+            return LayoutBuilder(
+              builder: (context, constraint) {
+                if (constraint.maxWidth >= 320 && constraint.maxWidth <= 480) {
+                  return Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      HomeAppBar(),
+                      const TaskProgress(),
+                      TaskList(uid: state.user.uid),
+                    ],
+                  );
+                } else {
+                  return Row(
+                    children: [
+                      Expanded(
+                        child: Column(
+                          children: [
+                            HomeAppBar(),
+                            const TaskProgress(),
+                          ],
+                        ),
+                      ),
+                      Expanded(
+                        child: Column(
+                          children: [
+                            const SafeArea(
+                              child: SizedBox(),
+                            ),
+                            TaskList(uid: state.user.uid, landscape: true),
+                          ],
+                        ),
+                      ),
+                    ],
+                  );
+                }
+              },
             );
+
+            // return Column(
+            //   crossAxisAlignment: CrossAxisAlignment.start,
+            //   children: [
+            //     HomeAppBar(),
+            //     const TaskProgress(),
+            //     TaskList(uid: state.user.uid),
+            //   ],
+            // );
           } else {
             return const SizedBox();
           }

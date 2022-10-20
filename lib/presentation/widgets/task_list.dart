@@ -11,10 +11,13 @@ import '../cubit/app_task_cubit.dart';
 
 class TaskList extends StatelessWidget {
   final String _uid;
+  final bool _landscape;
   TaskList({
     Key? key,
     required String uid,
+    landscape = false,
   })  : _uid = uid,
+        _landscape = landscape,
         super(key: key);
 
   final AppTaskCubit _appTaskCubit = getIt<AppTaskCubit>();
@@ -43,6 +46,13 @@ class TaskList extends StatelessWidget {
                 return Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
+                    _landscape
+                        ? const SafeArea(
+                            child: SizedBox(
+                              height: 64,
+                            ),
+                          )
+                        : const SizedBox(),
                     Text(
                       'Tasks',
                       style: textStyle1.copyWith(
