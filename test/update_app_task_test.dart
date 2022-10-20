@@ -7,20 +7,25 @@ import 'package:nf_tasks/domain/usecases/update_app_task.dart';
 void main() {
   UpdateAppTask usecase = UpdateAppTask();
 
-  Task t1 = const Task(id: "1", deadline: "", description: "", title: "", type: "");
-  Task t2 = const Task(id: "2", deadline: "", description: "", title: "", type: "");
-  Task t3 = const Task(id: "3", deadline: "", description: "", title: "", type: "");
-  Task t4 = const Task(id: "4", deadline: "", description: "", title: "", type: "");
-  Task t5 = const Task(id: "5", deadline: "", description: "", title: "", type: "");
+  Task t1 =
+      const Task(id: "1", deadline: "", description: "", title: "", type: "");
+  Task t2 =
+      const Task(id: "2", deadline: "", description: "", title: "", type: "");
+  Task t3 =
+      const Task(id: "3", deadline: "", description: "", title: "", type: "");
+  Task t4 =
+      const Task(id: "4", deadline: "", description: "", title: "", type: "");
+  Task t5 =
+      const Task(id: "5", deadline: "", description: "", title: "", type: "");
 
-  UserTask ut1 = UserTask(taskId: "1");
-  UserTask ut2 = UserTask(taskId: "2");
-  UserTask ut3 = UserTask(taskId: "3");
-  UserTask ut4 = UserTask(taskId: "4");
-  UserTask ut5 = UserTask(taskId: "5");
+  UserTask ut1 = UserTask(id: "1");
+  UserTask ut2 = UserTask(id: "2");
+  UserTask ut3 = UserTask(id: "3");
+  UserTask ut4 = UserTask(id: "4");
+  UserTask ut5 = UserTask(id: "5");
 
-  UserTask newut2 = UserTask(taskId: "2", isCompleted: true);
-  UserTask newut4 = UserTask(taskId: "4", isCompleted: true);
+  UserTask newut2 = UserTask(id: "2", isCompleted: true);
+  UserTask newut4 = UserTask(id: "4", isCompleted: true);
 
   List<AppTask> listAppTask = [
     AppTask(task: t1, userTask: ut1),

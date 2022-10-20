@@ -1,20 +1,20 @@
 import 'package:equatable/equatable.dart';
 
 // ignore: must_be_immutable
-class UserTask extends Equatable{
-  final String _taskId;
+class UserTask extends Equatable {
+  final String _id;
   bool _isCompleted, _isNew;
 
   UserTask({
-    required String taskId,
+    required String id,
     bool isCompleted = false,
     bool isNew = true,
-  })  : _taskId = taskId,
+  })  : _id = id,
         _isNew = isNew,
         _isCompleted = isCompleted;
 
   String get taskid {
-    return _taskId;
+    return _id;
   }
 
   bool get isCompleted {
@@ -36,7 +36,7 @@ class UserTask extends Equatable{
   void read() {
     _isNew = false;
   }
-  
+
   @override
-  List<Object?> get props => [_taskId, _isCompleted, _isNew];
+  List<Object?> get props => [_id, _isCompleted, _isNew];
 }

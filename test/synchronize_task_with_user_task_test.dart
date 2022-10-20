@@ -16,9 +16,9 @@ void main() {
   ];
 
   List<UserTask> listUserTask = [
-    UserTask(taskId: "1"),
-    UserTask(taskId: "2"),
-    UserTask(taskId: "3"),
+    UserTask(id: "1"),
+    UserTask(id: "2"),
+    UserTask(id: "3"),
   ];
 
   test(

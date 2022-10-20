@@ -23,7 +23,7 @@ class AppTaskCubit extends Cubit<List<AppTask>> {
     required UpdateUserTasks updateUserTasks,
     required GetTasks getTasks,
     required UpdateAppTask updateAppTask,
-    required  SynchronizeTaskWithUserTask synchronizeTask,
+    required SynchronizeTaskWithUserTask synchronizeTask,
   })  : _getUserTasks = getUserTasks,
         _initializeUserTasks = initializeUserTasks,
         _updateUserTasks = updateUserTasks,
@@ -44,11 +44,10 @@ class AppTaskCubit extends Cubit<List<AppTask>> {
       _initializeUserTasks(uid: uid, listTaskId: listTaskId);
       for (int i = 0; i < listTasks.length; i++) {
         listUserTasks.add(
-          UserTask(taskId: listTasks[i].id),
+          UserTask(id: listTasks[i].id),
         );
       }
     } else if (listUserTasks.length != listTasks.length) {
-
       final newUserTask = _synchronizeTask(
         listTask: listTasks,
         listUserTask: listUserTasks,

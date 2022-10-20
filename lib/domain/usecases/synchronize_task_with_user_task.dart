@@ -15,7 +15,7 @@ class SynchronizeTaskWithUserTask {
 
     for (int i = userTaskLength; i < taskLength; i++) {
       result.add(
-        UserTask(taskId: listTask[i].id),
+        UserTask(id: listTask[i].id),
       );
     }
 

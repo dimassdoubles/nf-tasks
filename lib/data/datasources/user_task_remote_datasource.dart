@@ -33,7 +33,7 @@ class FirestoreUserTaskDataSource extends UserTaskRemoteDataSource {
     final listUserTask = result.docs
         .map(
           (e) => UserTask(
-            taskId: e.get("task_id"),
+            id: e.get("task_id"),
             isCompleted: e.get("is_completed"),
             isNew: e.get("is_new"),
           ),
