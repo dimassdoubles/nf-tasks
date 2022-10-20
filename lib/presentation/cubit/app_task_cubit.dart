@@ -1,5 +1,5 @@
 import 'package:bloc/bloc.dart';
-import 'package:nf_tasks/domain/usecases/update_app_task.dart';
+import '../../domain/usecases/update_app_task.dart';
 import '../../domain/usecases/synchronize_task_with_user_task.dart';
 import '../../domain/entity/user_task.dart';
 import '../../domain/usecases/get_tasks.dart';

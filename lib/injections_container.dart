@@ -3,7 +3,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:get_it/get_it.dart';
 import 'package:google_sign_in/google_sign_in.dart';
-import 'package:nf_tasks/domain/usecases/update_app_task.dart';
+import 'domain/usecases/update_app_task.dart';
 import 'domain/usecases/synchronize_task_with_user_task.dart';
 import 'data/datasources/user_task_remote_datasource.dart';
 import 'data/repositories/user_task_repository.dart';

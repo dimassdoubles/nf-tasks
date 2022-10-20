@@ -1,4 +1,4 @@
-import 'package:nf_tasks/domain/entity/app_task.dart';
+import '../entity/app_task.dart';
 
 import '../entity/user_task.dart';
 

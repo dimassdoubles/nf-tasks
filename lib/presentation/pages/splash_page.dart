@@ -2,7 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:nf_tasks/presentation/cubit/app_task_cubit.dart';
+import '../cubit/app_task_cubit.dart';
 import '../../injections_container.dart';
 import '../bloc/authentication_bloc/authentication_bloc.dart';
 import '../bloc/authentication_bloc/authentication_event.dart';
