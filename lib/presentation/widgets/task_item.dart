@@ -47,7 +47,6 @@ class TaskItem extends StatelessWidget {
                           uid: _uid,
                           listUserTasks: [userTask],
                         );
-                        _appTaskCubit.getUserTasks(uid: _uid);
                       },
                       child: Container(
                         width: 25,
@@ -70,7 +69,6 @@ class TaskItem extends StatelessWidget {
                           uid: _uid,
                           listUserTasks: [userTask],
                         );
-                        _appTaskCubit.getUserTasks(uid: _uid);
                       },
                       child: Container(
                         width: 25,

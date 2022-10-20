@@ -1,20 +1,22 @@
+// ignore_for_file: must_be_immutable
+
+import 'package:equatable/equatable.dart';
+
 import 'task.dart';
 import 'user_task.dart';
 
-class AppTask {
+class AppTask extends Equatable {
   final Task _task;
-  final UserTask _userTask;
+  UserTask userTask;
   AppTask({
     required Task task,
-    required UserTask userTask,
-  })  : _task = task,
-        _userTask = userTask;
+    required this.userTask,
+  }) : _task = task;
 
   Task get task {
     return _task;
   }
 
-  UserTask get userTask {
-    return _userTask;
-  }
+  @override
+  List<Object?> get props => [_task, userTask];
 }

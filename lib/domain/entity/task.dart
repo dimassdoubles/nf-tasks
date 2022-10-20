@@ -1,7 +1,9 @@
-class Task {
+import 'package:equatable/equatable.dart';
+
+class Task extends Equatable {
   final String _id, _deadline, _description, _title, _type;
   
-  Task({
+  const Task({
     required String id,
     required String deadline,
     required String description,
@@ -32,4 +34,7 @@ class Task {
   String get type {
     return _type;
   }
+  
+  @override
+  List<Object?> get props => [_id, _deadline, _description, _title, _type];
 }
