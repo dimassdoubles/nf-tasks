@@ -27,8 +27,7 @@ class FirestoreUserTaskDataSource extends UserTaskRemoteDataSource {
   Future<List<UserTask>> getUserTasks({
     required String uid,
   }) async {
-    CollectionReference collectionReference = _firestore.collection(uid);
-    final result = await collectionReference.get();
+    final result = await _firestore.collection(uid).get();
 
     final listUserTask = result.docs
         .map(

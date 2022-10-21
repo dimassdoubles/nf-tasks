@@ -17,9 +17,7 @@ class FirestoreTaskDataSource extends TaskRemoteDataSource {
 
   @override
   Future<List<Task>> getTasks() async {
-    CollectionReference collectionReference =
-        _firestore.collection(collectionName);
-    final result = await collectionReference.get();
+    final result = await _firestore.collection(collectionName).get();
 
     final listTask = result.docs
         .map(
