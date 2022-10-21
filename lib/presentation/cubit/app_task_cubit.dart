@@ -33,41 +33,41 @@ class AppTaskCubit extends Cubit<List<AppTask>> {
         super([]);
 
   getUserTasks({required String uid}) async {
-    final listTasks = await _getTasks();
-    List<UserTask> listUserTasks = await _getUserTasks(uid: uid);
+    final listTask = await _getTasks();
+    List<UserTask> listUserTask = await _getUserTasks(uid: uid);
 
     // if list user task is empty, should make new colelction on firebse
-    // and fill with document 
-    if (listUserTasks.isEmpty) {
-      final listTaskId = listTasks
+    // and fill with document
+    if (listUserTask.isEmpty) {
+      final listTaskId = listTask
           .map(
             (e) => e.id,
           )
           .toList();
       _initializeUserTasks(uid: uid, listTaskId: listTaskId);
-      for (int i = 0; i < listTasks.length; i++) {
-        listUserTasks.add(
-          UserTask(id: listTasks[i].id),
+      for (int i = 0; i < listTask.length; i++) {
+        listUserTask.add(
+          UserTask(id: listTask[i].id),
         );
       }
-    } 
-    
+    }
+
     // this is to detect any new task
-    else if (listUserTasks.length != listTasks.length) {
+    else if (listUserTask.length != listTask.length) {
       final newUserTask = _synchronizeTask(
-        listTask: listTasks,
-        listUserTask: listUserTasks,
+        listTask: listTask,
+        listUserTask: listUserTask,
       );
-      listUserTasks = [...listUserTasks, ...newUserTask];
-      _updateUserTasks(uid: uid, listUserTasks: newUserTask);
+      listUserTask = [...listUserTask, ...newUserTask];
+      _updateUserTasks(uid: uid, listUserTask: newUserTask);
     }
 
     List<AppTask> listAppTask = [];
-    for (int i = 0; i < listTasks.length; i++) {
+    for (int i = 0; i < listTask.length; i++) {
       listAppTask.add(
         AppTask(
-          task: listTasks[i],
-          userTask: listUserTasks[i],
+          task: listTask[i],
+          userTask: listUserTask[i],
         ),
       );
     }
@@ -77,18 +77,18 @@ class AppTaskCubit extends Cubit<List<AppTask>> {
 
   updateUserTasks({
     required String uid,
-    required List<UserTask> listUserTasks,
+    required List<UserTask> listUserTask,
   }) {
     _updateUserTasks(
       uid: uid,
-      listUserTasks: listUserTasks,
+      listUserTask: listUserTask,
     );
 
     emit(
       [
         ..._updateAppTask(
           listAppTask: state,
-          listUserTaskModified: listUserTasks,
+          listUserTaskModified: listUserTask,
         ),
       ],
     );

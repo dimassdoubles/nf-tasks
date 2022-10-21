@@ -5,7 +5,7 @@ abstract class UserTaskRepository {
     required String uid,
   });
   Future<void> updateUserTasks({
-    required List<UserTask> listUserTasks,
+    required List<UserTask> listUserTask,
     required String uid,
   });
   Future<void> initializeUserTasks({

@@ -18,11 +18,11 @@ class UserTaskRepositoryImpl extends UserTaskRepository {
 
   @override
   Future<void> updateUserTasks({
-    required List<UserTask> listUserTasks,
+    required List<UserTask> listUserTask,
     required String uid,
   }) async {
     return await _remoteDataSource.updateUserTasks(
-      listUserTasks: listUserTasks,
+      listUserTask: listUserTask,
       uid: uid,
     );
   }

@@ -7,7 +7,7 @@ abstract class UserTaskRemoteDataSource {
     required String uid,
   });
   Future<void> updateUserTasks({
-    required List<UserTask> listUserTasks,
+    required List<UserTask> listUserTask,
     required String uid,
   });
 
@@ -44,12 +44,12 @@ class FirestoreUserTaskDataSource extends UserTaskRemoteDataSource {
 
   @override
   Future<void> updateUserTasks({
-    required List<UserTask> listUserTasks,
+    required List<UserTask> listUserTask,
     required String uid,
   }) async {
     WriteBatch batch = _firestore.batch();
     CollectionReference collectionReference = _firestore.collection(uid);
-    for (var element in listUserTasks) {
+    for (var element in listUserTask) {
       batch.set(collectionReference.doc(element.taskid), {
         "task_id": element.taskid,
         "is_completed": element.isCompleted,

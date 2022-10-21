@@ -45,7 +45,7 @@ class TaskItem extends StatelessWidget {
                         userTask.unCompleted();
                         _appTaskCubit.updateUserTasks(
                           uid: _uid,
-                          listUserTasks: [userTask],
+                          listUserTask: [userTask],
                         );
                       },
                       child: Container(
@@ -67,7 +67,7 @@ class TaskItem extends StatelessWidget {
                         userTask.completed();
                         _appTaskCubit.updateUserTasks(
                           uid: _uid,
-                          listUserTasks: [userTask],
+                          listUserTask: [userTask],
                         );
                       },
                       child: Container(

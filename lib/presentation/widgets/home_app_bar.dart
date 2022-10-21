@@ -126,7 +126,7 @@ class HomeAppBar extends StatelessWidget {
                               if (listNewAppTask.isNotEmpty) {
                                 _appTaskCubit.updateUserTasks(
                                   uid: state.user.uid,
-                                  listUserTasks: [
+                                  listUserTask: [
                                     ...listNewAppTask
                                         .map((e) => e.userTask)
                                         .map(
