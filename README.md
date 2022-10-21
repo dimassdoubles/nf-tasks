@@ -1,16 +1,9 @@
-# nf_tasks
+# NF-Tasks ( Nurul Fikri Tasks )
+<a href="https://www.instagram.com/tv/Cj5PeazA8hg/?utm_source=ig_web_copy_link">Video Demo</a>
 
-A new Flutter project.
 
-## Getting Started
+Mini project program study independent kampus merdeka. Aplikasi ini adalah aplikasi untuk mirroring tugas-tugas di website NF-Computer. Untuk mendapatkan data tugas2, saya membuat script dari bahasa python : <a href=https://github.com/dimassdoubles/scrapper-nf-computer>Scrapper</a>
 
-This project is a starting point for a Flutter application.
+## ScreenShots
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+<img src=https://user-images.githubusercontent.com/76572359/197248396-421678aa-6c02-4232-baf0-ebf604eb9ad9.png >
