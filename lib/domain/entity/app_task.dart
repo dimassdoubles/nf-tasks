@@ -8,6 +8,7 @@ import 'user_task.dart';
 class AppTask extends Equatable {
   final Task _task;
   UserTask userTask;
+  
   AppTask({
     required Task task,
     required this.userTask,

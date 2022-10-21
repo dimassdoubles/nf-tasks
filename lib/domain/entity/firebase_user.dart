@@ -1,6 +1,7 @@
 class FirebaseUser {
   final String _uid;
   final String? _name, _email;
+  
   FirebaseUser({
     required String uid,
     required String? name,
