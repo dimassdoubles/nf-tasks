@@ -3,6 +3,7 @@ import '../repositories/user_repository.dart';
 
 class GetUserSignedIn {
   final UserRepository _repository;
+  
   GetUserSignedIn({
     required UserRepository repository,
   }) : _repository = repository;

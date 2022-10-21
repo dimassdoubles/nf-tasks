@@ -3,6 +3,7 @@ import '../repositories/task_reporitory.dart';
 
 class GetTasks {
   final TaskRepository _repository;
+  
   GetTasks({
     required TaskRepository repository,
   }) : _repository = repository;

@@ -2,6 +2,7 @@ import '../repositories/user_task_repository.dart';
 
 class InitializeUserTasks {
   final UserTaskRepository _repository;
+  
   InitializeUserTasks({
     required UserTaskRepository repository,
   }) : _repository = repository;

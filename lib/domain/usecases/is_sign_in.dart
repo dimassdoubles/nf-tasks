@@ -2,6 +2,7 @@ import '../repositories/user_repository.dart';
 
 class IsSignIn {
   final UserRepository _repository;
+  
   IsSignIn({
     required UserRepository repository,
   }) : _repository = repository;
