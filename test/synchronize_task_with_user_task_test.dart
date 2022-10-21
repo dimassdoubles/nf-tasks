@@ -7,7 +7,7 @@ void main() {
   SynchronizeTaskWithUserTask useCase = SynchronizeTaskWithUserTask();
 
   List<Task> listTask = [
-    const Task(id: "-1", deadline: "", description: "", title: "", type: ""),
+    const Task(id: "1", deadline: "", description: "", title: "", type: ""),
     const Task(id: "2", deadline: "", description: "", title: "", type: ""),
     const Task(id: "3", deadline: "", description: "", title: "", type: ""),
     const Task(id: "4", deadline: "", description: "", title: "", type: ""),
