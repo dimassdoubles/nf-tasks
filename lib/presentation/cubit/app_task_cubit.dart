@@ -35,6 +35,9 @@ class AppTaskCubit extends Cubit<List<AppTask>> {
   getUserTasks({required String uid}) async {
     final listTasks = await _getTasks();
     List<UserTask> listUserTasks = await _getUserTasks(uid: uid);
+
+    // if list user task is empty, should make new colelction on firebse
+    // and fill with document 
     if (listUserTasks.isEmpty) {
       final listTaskId = listTasks
           .map(
@@ -47,7 +50,10 @@ class AppTaskCubit extends Cubit<List<AppTask>> {
           UserTask(id: listTasks[i].id),
         );
       }
-    } else if (listUserTasks.length != listTasks.length) {
+    } 
+    
+    // this is to detect any new task
+    else if (listUserTasks.length != listTasks.length) {
       final newUserTask = _synchronizeTask(
         listTask: listTasks,
         listUserTask: listUserTasks,
